@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4992BADF20789AF700216EC3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4992BADE20789AF700216EC3 /* main.swift */; };
+		4992BAE62078FC5700216EC3 /* players.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4992BAE52078FC5700216EC3 /* players.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		4992BADB20789AF700216EC3 /* Soccer-League-Coordinator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Soccer-League-Coordinator"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4992BADE20789AF700216EC3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		4992BAE52078FC5700216EC3 /* players.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = players.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				4992BADE20789AF700216EC3 /* main.swift */,
+				4992BAE52078FC5700216EC3 /* players.swift */,
 			);
 			path = "Soccer-League-Coordinator";
 			sourceTree = "<group>";
@@ -119,6 +122,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4992BAE62078FC5700216EC3 /* players.swift in Sources */,
 				4992BADF20789AF700216EC3 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

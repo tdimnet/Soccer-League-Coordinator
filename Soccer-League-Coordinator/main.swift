@@ -8,11 +8,23 @@
 
 import Foundation
 
-let player: [String: Any] = [
-    "name": "Joe Smith",
-    "height": 42,
-    "soccerExperience": true,
-    "guardian": "Jim and Jan Smith"
+let players: [[String: Any]] = [
+    joeSmith,
+    jillTanner,
+    billBon,
+    evaGordon,
+    mattGill,
+    kimmyStein,
+    sammyAdams,
+    karlSaygan,
+    suzaneGreenberg,
+    salDali,
+    joeKavalier,
+    benFinkelstein,
+    diegoSoto,
+    chloeAlaska,
+    arnoldWillis,
+    phillipHelm,
+    lesClay,
+    herschelKrustofski
 ]
-
-print(player["name"] ?? "foo")
