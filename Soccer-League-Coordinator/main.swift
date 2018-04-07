@@ -8,5 +8,11 @@
 
 import Foundation
 
-print("Hello, World!")
+let player: [String: Any] = [
+    "name": "Joe Smith",
+    "height": 42,
+    "soccerExperience": true,
+    "guardian": "Jim and Jan Smith"
+]
 
+print(player["name"] ?? "foo")
