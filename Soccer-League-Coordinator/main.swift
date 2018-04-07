@@ -29,8 +29,15 @@ let players: [[String: String]] = [
     herschelKrustofski
 ]
 
+// The three arrays of players
+let numberOfTeams: Int = 3
+var teamDragons: [[String: String]] = []
+var teamSharks: [[String: String]] = []
+var teamRaptors: [[String: String]] = []
+
 var novicePlayers: [[String: String]] = []
 var experimentedPlayers: [[String: String]] = []
+
 
 for player in players {
     if player["soccerExperience"] == "Yes" {
@@ -40,8 +47,40 @@ for player in players {
     }
 }
 
-print("The number of experimented players is \(experimentedPlayers.count)")
-print("The number of novice players is \(novicePlayers.count)")
+var numberOfExperimentedPlayerPerTeam: Int = experimentedPlayers.count / numberOfTeams
+var numberOfNovicePlayerPerTeam: Int = novicePlayers.count / numberOfTeams
+
+
+/*
+ J'ai :
+    - Un tableau contenant les novices.
+    - Un tableau contenant les bons.
+    - Le nombre de joueurs novices a avoir par team
+    - Le nombre de joueurs bons a avoir par team
+ 
+ Je dois :
+    - Mettre 3 joueurs bons dans chaque equipe
+    - Mettre 3 joueurs novices dans chaque equipe
+ 
+ Je :
+    - Boucle dans mon tableau de joueurs experimentes.
+    - J'ajoute le joueur dans le tableau de l'equipe.
+    - J'enleve le joueur dans le tableau des joueurs experimentes
+    - Quand j'attends trois, j'arrete la boucle
+ */
+
+for index in 0..<numberOfNovicePlayerPerTeam {
+    teamDragons.append(experimentedPlayers[index])
+    experimentedPlayers.remove(at: index)
+}
+
+print(teamDragons.count)
+
+
+
+
+
+
 
 
 
