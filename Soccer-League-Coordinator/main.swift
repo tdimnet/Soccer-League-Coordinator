@@ -69,18 +69,25 @@ var numberOfNovicePlayerPerTeam: Int = novicePlayers.count / numberOfTeams
     - Quand j'attends trois, j'arrete la boucle
  */
 
-for index in 0..<numberOfNovicePlayerPerTeam {
-    teamDragons.append(experimentedPlayers[index])
-    experimentedPlayers.remove(at: index)
+for _ in 0..<numberOfExperimentedPlayerPerTeam {
+    teamRaptors.append(experimentedPlayers[experimentedPlayers.count - 1])
+    experimentedPlayers.remove(at: experimentedPlayers.count - 1)
 }
 
-print(teamDragons.count)
+for _ in 0..<numberOfExperimentedPlayerPerTeam {
+    teamSharks.append(experimentedPlayers[experimentedPlayers.count - 1])
+    experimentedPlayers.remove(at: experimentedPlayers.count - 1)
+}
 
+for _ in 0..<numberOfExperimentedPlayerPerTeam {
+    teamDragons.append(experimentedPlayers[experimentedPlayers.count - 1])
+    experimentedPlayers.remove(at: experimentedPlayers.count - 1)
+}
 
-
-
-
-
+print("XP Players \(experimentedPlayers.count)")
+print("Team shark: \(teamSharks)")
+print("Team dragon: \(teamDragons)")
+print("Team raptors: \(teamRaptors)")
 
 
 
