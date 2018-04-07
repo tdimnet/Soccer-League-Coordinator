@@ -8,7 +8,7 @@
 
 import Foundation
 
-let players: [[String: Any]] = [
+let players: [[String: String]] = [
     joeSmith,
     jillTanner,
     billBon,
@@ -28,3 +28,24 @@ let players: [[String: Any]] = [
     lesClay,
     herschelKrustofski
 ]
+
+var novicePlayers: [[String: String]] = []
+var experimentedPlayers: [[String: String]] = []
+
+for player in players {
+    if player["soccerExperience"] == "Yes" {
+        experimentedPlayers.append(player)
+    } else {
+        novicePlayers.append(player)
+    }
+}
+
+print("The number of experimented players is \(experimentedPlayers.count)")
+print("The number of novice players is \(novicePlayers.count)")
+
+
+
+
+
+
+
