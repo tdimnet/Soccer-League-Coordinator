@@ -50,41 +50,55 @@ for player in players {
 var numberOfExperimentedPlayerPerTeam: Int = experimentedPlayers.count / numberOfTeams
 var numberOfNovicePlayerPerTeam: Int = novicePlayers.count / numberOfTeams
 
-
 /*
- J'ai :
-    - Un tableau contenant les novices.
-    - Un tableau contenant les bons.
-    - Le nombre de joueurs novices a avoir par team
-    - Le nombre de joueurs bons a avoir par team
- 
- Je dois :
-    - Mettre 3 joueurs bons dans chaque equipe
-    - Mettre 3 joueurs novices dans chaque equipe
- 
- Je :
-    - Boucle dans mon tableau de joueurs experimentes.
-    - J'ajoute le joueur dans le tableau de l'equipe.
-    - J'enleve le joueur dans le tableau des joueurs experimentes
-    - Quand j'attends trois, j'arrete la boucle
+    Add experimented players
  */
 
+// Team Raptors
 for _ in 0..<numberOfExperimentedPlayerPerTeam {
     teamRaptors.append(experimentedPlayers[experimentedPlayers.count - 1])
     experimentedPlayers.remove(at: experimentedPlayers.count - 1)
 }
 
+// Team Sharks
 for _ in 0..<numberOfExperimentedPlayerPerTeam {
     teamSharks.append(experimentedPlayers[experimentedPlayers.count - 1])
     experimentedPlayers.remove(at: experimentedPlayers.count - 1)
 }
 
+// Team Dragons
 for _ in 0..<numberOfExperimentedPlayerPerTeam {
     teamDragons.append(experimentedPlayers[experimentedPlayers.count - 1])
     experimentedPlayers.remove(at: experimentedPlayers.count - 1)
 }
 
-print("XP Players \(experimentedPlayers.count)")
+
+/*
+ Add novice players
+ */
+
+// Team Raptors
+for _ in 0..<numberOfNovicePlayerPerTeam {
+    teamRaptors.append(novicePlayers[novicePlayers.count - 1])
+    novicePlayers.remove(at: novicePlayers.count - 1)
+}
+
+// Team Sharks
+for _ in 0..<numberOfNovicePlayerPerTeam {
+    teamSharks.append(novicePlayers[novicePlayers.count - 1])
+    novicePlayers.remove(at: novicePlayers.count - 1)
+}
+
+// Team Dragons
+for _ in 0..<numberOfNovicePlayerPerTeam {
+    teamDragons.append(novicePlayers[novicePlayers.count - 1])
+    novicePlayers.remove(at: novicePlayers.count - 1)
+}
+
+//
+
+print("Total XP Players available \(experimentedPlayers.count)")
+print("Total Novice Players available \(experimentedPlayers.count)")
 print("Team shark: \(teamSharks)")
 print("Team dragon: \(teamDragons)")
 print("Team raptors: \(teamRaptors)")
