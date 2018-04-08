@@ -144,3 +144,31 @@ let herschelKrustofski: [String: String] = [
     "guardian": "Hyman and Rachel Krustofski"
 ]
 
+let thomasDimnet: [String: String] = [
+    "name": "Thomas Dimnet",
+    "height": "45",
+    "soccerExperience": "Yes",
+    "guardian": "Corinne Dimnet"
+]
+
+let jeromeDimnet: [String: String] = [
+    "name": "Jerome Dimnet",
+    "height": "45",
+    "soccerExperience": "Yes",
+    "guardian": "Jean Marc Dimnet"
+]
+
+let alexCorbelli: [String: String] = [
+    "name": "Alexandra Corbelli",
+    "height": "45",
+    "soccerExperience": "No",
+    "guardian": "Doudou and Zezette Corbelli"
+]
+
+
+let guillaumeBrovnic: [String: String] = [
+    "name": "Guillaume Brovnic",
+    "height": "45",
+    "soccerExperience": "No",
+    "guardian": "Papa Brovnic"
+]

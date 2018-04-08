@@ -26,7 +26,11 @@ let players: [[String: String]] = [
     arnoldWillis,
     phillipHelm,
     lesClay,
-    herschelKrustofski
+    herschelKrustofski,
+    thomasDimnet,
+    jeromeDimnet,
+    alexCorbelli,
+    guillaumeBrovnic
 ]
 
 // The three arrays of players
@@ -47,8 +51,11 @@ for player in players {
     }
 }
 
-var numberOfExperimentedPlayerPerTeam: Int = experimentedPlayers.count / numberOfTeams
-var numberOfNovicePlayerPerTeam: Int = novicePlayers.count / numberOfTeams
+let numberOfExperimentedPlayerPerTeam: Int = experimentedPlayers.count / numberOfTeams
+let remainingExperimentedPlayer: Int = experimentedPlayers.count % numberOfTeams
+
+let numberOfNovicePlayerPerTeam: Int = novicePlayers.count / numberOfTeams
+let remainingNovicePlayer: Int = novicePlayers.count % numberOfTeams
 
 /*
     Add experimented players
@@ -71,6 +78,8 @@ for _ in 0..<numberOfExperimentedPlayerPerTeam {
     teamDragons.append(experimentedPlayers[experimentedPlayers.count - 1])
     experimentedPlayers.remove(at: experimentedPlayers.count - 1)
 }
+
+
 
 
 /*
@@ -98,10 +107,13 @@ for _ in 0..<numberOfNovicePlayerPerTeam {
 //
 
 print("Total XP Players available \(experimentedPlayers.count)")
-print("Total Novice Players available \(experimentedPlayers.count)")
-print("Team shark: \(teamSharks)")
-print("Team dragon: \(teamDragons)")
-print("Team raptors: \(teamRaptors)")
+print("Total Novice Players available \(novicePlayers.count)")
+print("Remaining XP Players available \(remainingExperimentedPlayer)")
+print("Remaining Novice Players available \(remainingNovicePlayer)")
+
+//print("Team shark: \(teamSharks)")
+//print("Team dragon: \(teamDragons)")
+//print("Team raptors: \(teamRaptors)")
 
 
 
