@@ -8,7 +8,7 @@
 
 import Foundation
 
-let players: [[String: String]] = [
+let players: [[String: Any]] = [
     joeSmith,
     jillTanner,
     billBon,
