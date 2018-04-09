@@ -27,11 +27,6 @@ let players: [[String: Any]] = [
     phillipHelm,
     lesClay,
     herschelKrustofski
-//    Think to add these players after code refactoring.
-//    thomasDimnet,
-//    jeromeDimnet,
-//    alexCorbelli,
-//    guillaumeBrovnic
 ]
 
 // The three arrays of players
@@ -40,14 +35,17 @@ var teamDragons: [[String: Any]] = []
 var teamSharks: [[String: Any]] = []
 var teamRaptors: [[String: Any]] = []
 
+var letters: [String] = []
+
 var novicePlayers: [[String: Any]] = []
 var experimentedPlayers: [[String: Any]] = []
 
+// Below are the date of practices for the three teams
 let dateOfFirstDragonsPractice: String = "Dragons - March 17, 1pm"
 let dateOfFirstSharksPractice: String = "Sharks - March 17, 3pm"
 let dateOfFirstRaptorsPractice: String = "Raptors - March 18, 1pm"
 
-
+// Sort the players into two distinc arrays (once for experimented and the other for novice)
 for player in players {
     if player["soccerExperience"] as! Bool {
         experimentedPlayers.append(player)
@@ -106,10 +104,10 @@ for _ in 0..<numberOfNovicePlayerPerTeam {
     novicePlayers.remove(at: novicePlayers.count - 1)
 }
 
-print("Total XP Players available \(experimentedPlayers.count)")
-print("Total Novice Players available \(novicePlayers.count)")
-print("Remaining XP Players available \(remainingExperimentedPlayer)")
-print("Remaining Novice Players available \(remainingNovicePlayer)")
+//print("Total XP Players available \(experimentedPlayers.count)")
+//print("Total Novice Players available \(novicePlayers.count)")
+//print("Remaining XP Players available \(remainingExperimentedPlayer)")
+//print("Remaining Novice Players available \(remainingNovicePlayer)")
 
 //print("Team shark: \(teamSharks)")
 //print("Team dragon: \(teamDragons)")
@@ -117,12 +115,42 @@ print("Remaining Novice Players available \(remainingNovicePlayer)")
 
 
 /*
- Create a personnalize letter for one player.
+ Create personnalize letters for each player.
  */
 
-let ExampleChoosenPlayer: [String: Any] = players[0]
-print(ExampleChoosenPlayer)
-print("Dear \(ExampleChoosenPlayer["guardian"] ?? ""), \(ExampleChoosenPlayer["name"] ?? "") has been selected for the team Dragon teams this year. Its first trainning will be at \(dateOfFirstDragonsPractice).")
+// The letters for the team raptor guardians.
+for index in 0..<teamRaptors.count {
+    let letter: String = "Dear \(teamRaptors[index]["guardian"] ?? ""), \(teamRaptors[index]["name"] ?? "") has been selected for the team Dragon teams this year. Its first trainning will be at \(dateOfFirstRaptorsPractice)."
+    letters.append(letter)
+}
+
+
+// The letters for the team shark guardians.
+for index in 0..<teamSharks.count {
+    let letter: String = "Dear \(teamSharks[index]["guardian"] ?? ""), \(teamSharks[index]["name"] ?? "") has been selected for the team Dragon teams this year. Its first trainning will be at \(dateOfFirstSharksPractice)."
+    letters.append(letter)
+}
+
+
+// The letters for the team dragon guardians.
+for index in 0..<teamDragons.count {
+    let letter: String = "Dear \(teamDragons[index]["guardian"] ?? ""), \(teamDragons[index]["name"] ?? "") has been selected for the team Dragon teams this year. Its first trainning will be at \(dateOfFirstDragonsPractice)."
+    letters.append(letter)
+}
+
+
+print("Team raptors: \(teamRaptors) \n")
+print("Team sharks: \(teamSharks) \n")
+print("Team dragons: \(teamDragons) \n")
+
+print("All letters count: \(letters)")
+
+
+
+
+
+
+
 
 
 

@@ -138,37 +138,8 @@ let lesClay: [String: Any] = [
 
 
 let herschelKrustofski: [String: Any] = [
-    "name": "Les Clay",
+    "name": "Herschel Krustofski",
     "height": 45,
     "soccerExperience": true,
     "guardian": "Hyman and Rachel Krustofski"
-]
-
-let thomasDimnet: [String: Any] = [
-    "name": "Thomas Dimnet",
-    "height": 45,
-    "soccerExperience": true,
-    "guardian": "Corinne Dimnet"
-]
-
-let jeromeDimnet: [String: Any] = [
-    "name": "Jerome Dimnet",
-    "height": 45,
-    "soccerExperience": true,
-    "guardian": "Jean Marc Dimnet"
-]
-
-let alexCorbelli: [String: Any] = [
-    "name": "Alexandra Corbelli",
-    "height": 45,
-    "soccerExperience": false,
-    "guardian": "Doudou and Zezette Corbelli"
-]
-
-
-let guillaumeBrovnic: [String: Any] = [
-    "name": "Guillaume Brovnic",
-    "height": 45,
-    "soccerExperience": false,
-    "guardian": "Papa Brovnic"
 ]
