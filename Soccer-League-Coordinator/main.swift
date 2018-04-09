@@ -64,23 +64,18 @@ let remainingNovicePlayer: Int = novicePlayers.count % numberOfTeams
     Add experimented players
  */
 
-// Team Raptors
-for _ in 0..<numberOfExperimentedPlayerPerTeam {
-    teamRaptors.append(experimentedPlayers[experimentedPlayers.count - 1])
-    experimentedPlayers.remove(at: experimentedPlayers.count - 1)
+func addExperimentedPlayers() -> [[String: Any]] {
+    var team: [[String: Any]] = []
+    for _ in 0..<numberOfExperimentedPlayerPerTeam {
+        team.append(experimentedPlayers[experimentedPlayers.count - 1])
+        experimentedPlayers.remove(at: experimentedPlayers.count - 1)
+    }
+    return team
 }
 
-// Team Sharks
-for _ in 0..<numberOfExperimentedPlayerPerTeam {
-    teamSharks.append(experimentedPlayers[experimentedPlayers.count - 1])
-    experimentedPlayers.remove(at: experimentedPlayers.count - 1)
-}
-
-// Team Dragons
-for _ in 0..<numberOfExperimentedPlayerPerTeam {
-    teamDragons.append(experimentedPlayers[experimentedPlayers.count - 1])
-    experimentedPlayers.remove(at: experimentedPlayers.count - 1)
-}
+teamRaptors = addExperimentedPlayers()
+teamSharks = addExperimentedPlayers()
+teamDragons = addExperimentedPlayers()
 
 /*
  Add novice players
@@ -109,9 +104,9 @@ for _ in 0..<numberOfNovicePlayerPerTeam {
 //print("Remaining XP Players available \(remainingExperimentedPlayer)")
 //print("Remaining Novice Players available \(remainingNovicePlayer)")
 
-//print("Team shark: \(teamSharks)")
-//print("Team dragon: \(teamDragons)")
-//print("Team raptors: \(teamRaptors)")
+print("Team shark: \(teamSharks) \n")
+print("Team dragon: \(teamDragons) \n")
+print("Team raptors: \(teamRaptors) \n")
 
 
 /*
@@ -144,7 +139,7 @@ func displayLetters(letters: [String]) -> Void {
     }
 }
 
-displayLetters(letters: letters)
+//displayLetters(letters: letters)
 
 
 
