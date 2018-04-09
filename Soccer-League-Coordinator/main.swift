@@ -36,12 +36,12 @@ let players: [[String: Any]] = [
 
 // The three arrays of players
 let numberOfTeams: Int = 3
-var teamDragons: [[String: String]] = []
-var teamSharks: [[String: String]] = []
-var teamRaptors: [[String: String]] = []
+var teamDragons: [[String: Any]] = []
+var teamSharks: [[String: Any]] = []
+var teamRaptors: [[String: Any]] = []
 
-var novicePlayers: [[String: String]] = []
-var experimentedPlayers: [[String: String]] = []
+var novicePlayers: [[String: Any]] = []
+var experimentedPlayers: [[String: Any]] = []
 
 let dateOfFirstDragonsPractice: String = "Dragons - March 17, 1pm"
 let dateOfFirstSharksPractice: String = "Sharks - March 17, 3pm"
@@ -49,7 +49,7 @@ let dateOfFirstRaptorsPractice: String = "Raptors - March 18, 1pm"
 
 
 for player in players {
-    if player["soccerExperience"] == "Yes" {
+    if player["soccerExperience"] as! Bool {
         experimentedPlayers.append(player)
     } else {
         novicePlayers.append(player)
@@ -120,7 +120,7 @@ print("Remaining Novice Players available \(remainingNovicePlayer)")
  Create a personnalize letter for one player.
  */
 
-let ExampleChoosenPlayer: [String: String] = players[0]
+let ExampleChoosenPlayer: [String: Any] = players[0]
 print(ExampleChoosenPlayer)
 print("Dear \(ExampleChoosenPlayer["guardian"] ?? ""), \(ExampleChoosenPlayer["name"] ?? "") has been selected for the team Dragon teams this year. Its first trainning will be at \(dateOfFirstDragonsPractice).")
 
