@@ -120,30 +120,31 @@ for _ in 0..<numberOfNovicePlayerPerTeam {
 
 // The letters for the team raptor guardians.
 for index in 0..<teamRaptors.count {
-    let letter: String = "Dear \(teamRaptors[index]["guardian"] ?? ""), \(teamRaptors[index]["name"] ?? "") has been selected for the team Dragon teams this year. Its first trainning will be at \(dateOfFirstRaptorsPractice)."
+    let letter: String = "Dear \(teamRaptors[index]["guardian"] ?? ""), \(teamRaptors[index]["name"] ?? "") has been selected for the team Raptors this year. Its first trainning will be at \(dateOfFirstRaptorsPractice)."
     letters.append(letter)
 }
 
 
 // The letters for the team shark guardians.
 for index in 0..<teamSharks.count {
-    let letter: String = "Dear \(teamSharks[index]["guardian"] ?? ""), \(teamSharks[index]["name"] ?? "") has been selected for the team Dragon teams this year. Its first trainning will be at \(dateOfFirstSharksPractice)."
+    let letter: String = "Dear \(teamSharks[index]["guardian"] ?? ""), \(teamSharks[index]["name"] ?? "") has been selected for the team Sharks this year. Its first trainning will be at \(dateOfFirstSharksPractice)."
     letters.append(letter)
 }
 
 
 // The letters for the team dragon guardians.
 for index in 0..<teamDragons.count {
-    let letter: String = "Dear \(teamDragons[index]["guardian"] ?? ""), \(teamDragons[index]["name"] ?? "") has been selected for the team Dragon teams this year. Its first trainning will be at \(dateOfFirstDragonsPractice)."
+    let letter: String = "Dear \(teamDragons[index]["guardian"] ?? ""), \(teamDragons[index]["name"] ?? "") has been selected for the team Dragons this year. Its first trainning will be at \(dateOfFirstDragonsPractice)."
     letters.append(letter)
 }
 
+func displayLetters(letters: [String]) -> Void {
+    for letter in letters {
+        print("\(letter) \n")
+    }
+}
 
-print("Team raptors: \(teamRaptors) \n")
-print("Team sharks: \(teamSharks) \n")
-print("Team dragons: \(teamDragons) \n")
-
-print("All letters count: \(letters)")
+displayLetters(letters: letters)
 
 
 
