@@ -35,103 +35,64 @@ var teamDragons: [[String: Any]] = []
 var teamSharks: [[String: Any]] = []
 var teamRaptors: [[String: Any]] = []
 
-var letters: [String] = []
-
-var novicePlayers: [[String: Any]] = []
-var experimentedPlayers: [[String: Any]] = []
-
-// Below are the date of practices for the three teams
-let dateOfFirstDragonsPractice: String = "Dragons - March 17, 1pm"
-let dateOfFirstSharksPractice: String = "Sharks - March 17, 3pm"
-let dateOfFirstRaptorsPractice: String = "Raptors - March 18, 1pm"
-
 // Sort the players into two distinc arrays (once for experimented and the other for novice)
-for player in players {
-    if player["soccerExperience"] as! Bool {
-        experimentedPlayers.append(player)
-    } else {
-        novicePlayers.append(player)
+func sortPlayers(fromTeam team: [[String: Any]]) -> (xpTeam: [[String: Any]], noviceTeam: [[String: Any]]) {
+    var xpTeam: [[String: Any]] = []
+    var noviceTeam: [[String: Any]] = []
+    
+    for player in team {
+        if player["soccerExperience"] as! Bool {
+            xpTeam.append(player)
+        } else {
+            noviceTeam.append(player)
+        }
     }
+    return (xpTeam, noviceTeam)
 }
 
+var experimentedPlayers: [[String: Any]] = sortPlayers(fromTeam: players).xpTeam
+var novicePlayers: [[String: Any]] = sortPlayers(fromTeam: players).noviceTeam
+
+
 let numberOfExperimentedPlayerPerTeam: Int = experimentedPlayers.count / numberOfTeams
-let remainingExperimentedPlayer: Int = experimentedPlayers.count % numberOfTeams
-
 let numberOfNovicePlayerPerTeam: Int = novicePlayers.count / numberOfTeams
-let remainingNovicePlayer: Int = novicePlayers.count % numberOfTeams
 
-/*
-    Add experimented players
- */
 
-func addExperimentedPlayers() -> [[String: Any]] {
+
+func addPlayers() -> [[String: Any]] {
     var team: [[String: Any]] = []
+    
     for _ in 0..<numberOfExperimentedPlayerPerTeam {
         team.append(experimentedPlayers[experimentedPlayers.count - 1])
         experimentedPlayers.remove(at: experimentedPlayers.count - 1)
     }
+    
+    for _ in 0..<numberOfNovicePlayerPerTeam {
+        team.append(novicePlayers[novicePlayers.count - 1])
+        novicePlayers.remove(at: novicePlayers.count - 1)
+    }
+    
     return team
 }
 
-teamRaptors = addExperimentedPlayers()
-teamSharks = addExperimentedPlayers()
-teamDragons = addExperimentedPlayers()
+teamRaptors = addPlayers()
+teamSharks = addPlayers()
+teamDragons = addPlayers()
 
-/*
- Add novice players
- */
 
-// Team Raptors
-for _ in 0..<numberOfNovicePlayerPerTeam {
-    teamRaptors.append(novicePlayers[novicePlayers.count - 1])
-    novicePlayers.remove(at: novicePlayers.count - 1)
+var letters: [String] = []
+
+func createLetters(toTeam team: [[String: Any]], teamName: String, teamPractice: String) -> Void {
+    for index in 0..<teamRaptors.count {
+        let letter: String = "Dear \(team[index]["guardian"] ?? ""), \(team[index]["name"] ?? "") has been selected for the team \(teamName) this year. Its first trainning will be at \(teamPractice)."
+        letters.append(letter)
+    }
 }
 
-// Team Sharks
-for _ in 0..<numberOfNovicePlayerPerTeam {
-    teamSharks.append(novicePlayers[novicePlayers.count - 1])
-    novicePlayers.remove(at: novicePlayers.count - 1)
-}
+createLetters(toTeam: teamRaptors, teamName: "Raptors", teamPractice: "Raptors - March 18, 1pm")
+createLetters(toTeam: teamDragons, teamName: "Dragons", teamPractice: "Dragons - March 17, 1pm")
+createLetters(toTeam: teamSharks, teamName: "Sharks", teamPractice: "Sharks - March 17, 3pm")
 
-// Team Dragons
-for _ in 0..<numberOfNovicePlayerPerTeam {
-    teamDragons.append(novicePlayers[novicePlayers.count - 1])
-    novicePlayers.remove(at: novicePlayers.count - 1)
-}
-
-//print("Total XP Players available \(experimentedPlayers.count)")
-//print("Total Novice Players available \(novicePlayers.count)")
-//print("Remaining XP Players available \(remainingExperimentedPlayer)")
-//print("Remaining Novice Players available \(remainingNovicePlayer)")
-
-print("Team shark: \(teamSharks) \n")
-print("Team dragon: \(teamDragons) \n")
-print("Team raptors: \(teamRaptors) \n")
-
-
-/*
- Create personnalize letters for each player.
- */
-
-// The letters for the team raptor guardians.
-for index in 0..<teamRaptors.count {
-    let letter: String = "Dear \(teamRaptors[index]["guardian"] ?? ""), \(teamRaptors[index]["name"] ?? "") has been selected for the team Raptors this year. Its first trainning will be at \(dateOfFirstRaptorsPractice)."
-    letters.append(letter)
-}
-
-
-// The letters for the team shark guardians.
-for index in 0..<teamSharks.count {
-    let letter: String = "Dear \(teamSharks[index]["guardian"] ?? ""), \(teamSharks[index]["name"] ?? "") has been selected for the team Sharks this year. Its first trainning will be at \(dateOfFirstSharksPractice)."
-    letters.append(letter)
-}
-
-
-// The letters for the team dragon guardians.
-for index in 0..<teamDragons.count {
-    let letter: String = "Dear \(teamDragons[index]["guardian"] ?? ""), \(teamDragons[index]["name"] ?? "") has been selected for the team Dragons this year. Its first trainning will be at \(dateOfFirstDragonsPractice)."
-    letters.append(letter)
-}
 
 func displayLetters(letters: [String]) -> Void {
     for letter in letters {
@@ -139,7 +100,7 @@ func displayLetters(letters: [String]) -> Void {
     }
 }
 
-//displayLetters(letters: letters)
+displayLetters(letters: letters)
 
 
 
