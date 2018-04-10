@@ -35,6 +35,21 @@ var teamDragons: [[String: Any]] = []
 var teamSharks: [[String: Any]] = []
 var teamRaptors: [[String: Any]] = []
 
+
+func calculAverageHeight(team: [[String: Any]]) -> Int {
+    var averageHeight: Int = 0
+    
+    for player in team {
+        averageHeight += player["height"] as! Int
+    }
+    
+    return averageHeight / team.count
+}
+
+let foo = calculAverageHeight(team: players)
+print(foo)
+
+
 // Sort the players into two distinc arrays (once for experimented and the other for novice)
 func sortPlayers(fromTeam team: [[String: Any]]) -> (xpTeam: [[String: Any]], noviceTeam: [[String: Any]]) {
     var xpTeam: [[String: Any]] = []
@@ -53,10 +68,8 @@ func sortPlayers(fromTeam team: [[String: Any]]) -> (xpTeam: [[String: Any]], no
 var experimentedPlayers: [[String: Any]] = sortPlayers(fromTeam: players).xpTeam
 var novicePlayers: [[String: Any]] = sortPlayers(fromTeam: players).noviceTeam
 
-
 let numberOfExperimentedPlayerPerTeam: Int = experimentedPlayers.count / numberOfTeams
 let numberOfNovicePlayerPerTeam: Int = novicePlayers.count / numberOfTeams
-
 
 
 func addPlayers() -> [[String: Any]] {
@@ -100,7 +113,8 @@ func displayLetters(letters: [String]) -> Void {
     }
 }
 
-displayLetters(letters: letters)
+//displayLetters(letters: letters)
+
 
 
 
