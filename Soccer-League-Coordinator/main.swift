@@ -8,6 +8,10 @@
 
 import Foundation
 
+/*
+ Part: 1 -> Create all the players data info
+ */
+
 let players: [[String: Any]] = [
     joeSmith,
     jillTanner,
@@ -36,6 +40,11 @@ var teamSharks: [[String: Any]] = []
 var teamRaptors: [[String: Any]] = []
 
 
+/*
+ Part: 2 -> Create well balanced teams of players
+ */
+
+
 // Sort the players into two distinc arrays (once for experimented and the other for novice)
 func sortPlayers(fromTeam team: [[String: Any]]) -> (xpTeam: [[String: Any]], noviceTeam: [[String: Any]]) {
     var xpTeam: [[String: Any]] = []
@@ -49,11 +58,25 @@ func sortPlayers(fromTeam team: [[String: Any]]) -> (xpTeam: [[String: Any]], no
             noviceTeam.append(player)
         }
     }
+    
     return (xpTeam, noviceTeam)
 }
 
 var experimentedPlayers: [[String: Any]] = sortPlayers(fromTeam: players).xpTeam
 var novicePlayers: [[String: Any]] = sortPlayers(fromTeam: players).noviceTeam
+
+//print("experimentedPlayers => \(experimentedPlayers)\n")
+//print("novicePlayers => \(novicePlayers)\n")
+
+var sortedExperimentedPlayers = experimentedPlayers.sorted(by: { guard let h0 = $0["height"] as? Int , let h1 = $1["height"] as? Int else { return false }
+return h0 > h1 })
+
+var sortedNovicePlayers = novicePlayers.sorted(by: { guard let h0 = $0["height"] as? Int , let h1 = $1["height"] as? Int else { return false }
+    return h0 < h1 })
+
+//print("sortedExperimentedPlayers => \(sortedExperimentedPlayers)\n")
+//print("sortedNovicePlayers => \(sortedNovicePlayers)\n")
+
 
 let numberOfExperimentedPlayerPerTeam: Int = experimentedPlayers.count / numberOfTeams
 let numberOfNovicePlayerPerTeam: Int = novicePlayers.count / numberOfTeams
@@ -63,13 +86,13 @@ func addPlayers() -> [[String: Any]] {
     var team: [[String: Any]] = []
     
     for _ in 0..<numberOfExperimentedPlayerPerTeam {
-        team.append(experimentedPlayers[experimentedPlayers.count - 1])
-        experimentedPlayers.remove(at: experimentedPlayers.count - 1)
+        team.append(sortedExperimentedPlayers[sortedExperimentedPlayers.count - 1])
+        sortedExperimentedPlayers.remove(at: sortedExperimentedPlayers.count - 1)
     }
     
     for _ in 0..<numberOfNovicePlayerPerTeam {
-        team.append(novicePlayers[novicePlayers.count - 1])
-        novicePlayers.remove(at: novicePlayers.count - 1)
+        team.append(sortedNovicePlayers[sortedNovicePlayers.count - 1])
+        sortedNovicePlayers.remove(at: sortedNovicePlayers.count - 1)
     }
     
     return team
@@ -79,6 +102,39 @@ teamRaptors = addPlayers()
 teamSharks = addPlayers()
 teamDragons = addPlayers()
 
+
+
+
+func calculAverageHeight(team: [[String: Any]]) -> Int {
+    var averageHeight: Int = 0
+    
+    for player in team {
+        averageHeight += player["height"] as! Int
+    }
+    
+    return averageHeight / team.count
+}
+
+//print("\(calculAverageHeight(team: players)) \n")
+//print("\(calculAverageHeight(team: teamRaptors)) \n")
+//print("\(calculAverageHeight(team: teamSharks)) \n")
+//print("\(calculAverageHeight(team: teamDragons)) \n")
+
+
+print("teamRaptors => \(teamRaptors) \n")
+print("teamSharks => \(teamSharks) \n")
+print("teamDragons => \(teamDragons) \n")
+
+
+/*
+ END: Part: 2
+ */
+
+
+
+/*
+ Part: 3 -> Create the letters for the guardian
+ */
 
 var letters: [String] = []
 
@@ -104,7 +160,7 @@ func displayLetters(letters: [String]) -> Void {
     }
 }
 
-displayLetters(letters: letters)
+//displayLetters(letters: letters)
 
 
 
