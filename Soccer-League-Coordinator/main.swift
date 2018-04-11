@@ -36,33 +36,6 @@ var teamSharks: [[String: Any]] = []
 var teamRaptors: [[String: Any]] = []
 
 
-func calculAverageHeight(team: [[String: Any]]) -> Int {
-    var averageHeight: Int = 0
-    
-    for player in team {
-        averageHeight += player["height"] as! Int
-    }
-    
-    return averageHeight / team.count
-}
-
-let avgHgh: Int = calculAverageHeight(team: players)
-print("The average Height is: \(avgHgh) \n")
-
-var smallPlayers: [[String: Any]] = []
-var tallPlayers: [[String: Any]] = []
-
-for player in players {
-    if (player["height"] as! Int) <= 42 {
-        smallPlayers.append(player)
-    } else {
-        tallPlayers.append(player)
-    }
-}
-
-
-
-
 
 
 
@@ -72,7 +45,8 @@ func sortPlayers(fromTeam team: [[String: Any]]) -> (xpTeam: [[String: Any]], no
     var noviceTeam: [[String: Any]] = []
     
     for player in team {
-        if player["soccerExperience"] as! Bool {
+        guard let isExperimented = player["soccerExperience"] as? Bool else { break }
+        if isExperimented {
             xpTeam.append(player)
         } else {
             noviceTeam.append(player)
@@ -80,72 +54,6 @@ func sortPlayers(fromTeam team: [[String: Any]]) -> (xpTeam: [[String: Any]], no
     }
     return (xpTeam, noviceTeam)
 }
-
-
-var smallXpPlayers: [[String: Any]] = sortPlayers(fromTeam: smallPlayers).xpTeam
-var smallNovicePlayers: [[String: Any]] = sortPlayers(fromTeam: smallPlayers).noviceTeam
-
-var tallXpPlayers: [[String: Any]] = sortPlayers(fromTeam: tallPlayers).xpTeam
-var tallNovicePlayers: [[String: Any]] = sortPlayers(fromTeam: tallPlayers).noviceTeam
-
-
-let numberOfExperimentedTallPlayerPerTeam: Int = tallXpPlayers.count / numberOfTeams
-let numberOfExperimentedSmallPlayerPerTeam: Int = smallXpPlayers.count / numberOfTeams
-let numberOfNoviceTallPlayerPerTeam: Int = tallNovicePlayers.count / numberOfTeams
-let numberOfNoviceSmallPlayerPerTeam: Int = smallNovicePlayers.count / numberOfTeams
-
-
-
-print("\(smallXpPlayers.count) \n")
-print("\(smallNovicePlayers.count) \n")
-print("\(tallXpPlayers.count) \n")
-print("\(tallNovicePlayers.count) \n")
-
-
-
-func newAddPlayers() -> [[String: Any]] {
-    var team: [[String: Any]] = []
-    
-    for _ in 0..<numberOfExperimentedTallPlayerPerTeam {
-        team.append(tallXpPlayers[tallXpPlayers.count - 1])
-        tallXpPlayers.remove(at: tallXpPlayers.count - 1)
-    }
-    
-    for _ in 0..<numberOfExperimentedSmallPlayerPerTeam {
-        team.append(smallXpPlayers[smallXpPlayers.count - 1])
-        smallXpPlayers.remove(at: smallXpPlayers.count - 1)
-    }
-    
-    for _ in 0..<numberOfNoviceTallPlayerPerTeam {
-        team.append(tallNovicePlayers[tallNovicePlayers.count - 1])
-        tallNovicePlayers.remove(at: tallNovicePlayers.count - 1)
-    }
-    
-    for _ in 0..<numberOfNoviceSmallPlayerPerTeam {
-        team.append(smallNovicePlayers[smallNovicePlayers.count - 1])
-        smallNovicePlayers.remove(at: smallNovicePlayers.count - 1)
-    }
-    
-    return team
-}
-
-
-let newTeamRaptors = newAddPlayers()
-let newTeamSharks = newAddPlayers()
-let newTeamDragons = newAddPlayers()
-
-
-//print("\(newTeamRaptors) \n")
-//print("\(newTeamSharks) \n")
-//print("\(newTeamDragons) \n")
-
-
-let teamRaptorsAvgHeight: Int = calculAverageHeight(team: newTeamRaptors)
-let teamSharksAvgHeight: Int = calculAverageHeight(team: newTeamSharks)
-let teamDragonsAvgHeight: Int = calculAverageHeight(team: newTeamDragons)
-
-
-
 
 var experimentedPlayers: [[String: Any]] = sortPlayers(fromTeam: players).xpTeam
 var novicePlayers: [[String: Any]] = sortPlayers(fromTeam: players).noviceTeam
@@ -173,6 +81,11 @@ func addPlayers() -> [[String: Any]] {
 teamRaptors = addPlayers()
 teamSharks = addPlayers()
 teamDragons = addPlayers()
+
+
+print("\(teamRaptors) \n")
+print("\(teamSharks) \n")
+print("\(teamDragons) \n")
 
 
 var letters: [String] = []
