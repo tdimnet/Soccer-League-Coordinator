@@ -46,8 +46,30 @@ func calculAverageHeight(team: [[String: Any]]) -> Int {
     return averageHeight / team.count
 }
 
-let foo = calculAverageHeight(team: players)
-print(foo)
+let avgHgh: Int = calculAverageHeight(team: players)
+print("The average Height is: \(avgHgh) \n")
+
+var smallPlayers: [[String: Any]] = []
+var tallPlayers: [[String: Any]] = []
+
+for player in players {
+    if (player["height"] as! Int) <= 42 {
+        smallPlayers.append(player)
+    } else {
+        tallPlayers.append(player)
+    }
+}
+
+let smallTeamAvgHgh: Int = calculAverageHeight(team: smallPlayers)
+let tallTeamAvgHgh: Int = calculAverageHeight(team: tallPlayers)
+
+print("\(smallPlayers) \n")
+print("\(tallPlayers) \n")
+
+
+
+
+
 
 
 // Sort the players into two distinc arrays (once for experimented and the other for novice)
