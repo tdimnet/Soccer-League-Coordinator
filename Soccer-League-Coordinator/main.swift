@@ -60,12 +60,6 @@ for player in players {
     }
 }
 
-let smallTeamAvgHgh: Int = calculAverageHeight(team: smallPlayers)
-let tallTeamAvgHgh: Int = calculAverageHeight(team: tallPlayers)
-
-print("\(smallPlayers) \n")
-print("\(tallPlayers) \n")
-
 
 
 
@@ -86,6 +80,72 @@ func sortPlayers(fromTeam team: [[String: Any]]) -> (xpTeam: [[String: Any]], no
     }
     return (xpTeam, noviceTeam)
 }
+
+
+var smallXpPlayers: [[String: Any]] = sortPlayers(fromTeam: smallPlayers).xpTeam
+var smallNovicePlayers: [[String: Any]] = sortPlayers(fromTeam: smallPlayers).noviceTeam
+
+var tallXpPlayers: [[String: Any]] = sortPlayers(fromTeam: tallPlayers).xpTeam
+var tallNovicePlayers: [[String: Any]] = sortPlayers(fromTeam: tallPlayers).noviceTeam
+
+
+let numberOfExperimentedTallPlayerPerTeam: Int = tallXpPlayers.count / numberOfTeams
+let numberOfExperimentedSmallPlayerPerTeam: Int = smallXpPlayers.count / numberOfTeams
+let numberOfNoviceTallPlayerPerTeam: Int = tallNovicePlayers.count / numberOfTeams
+let numberOfNoviceSmallPlayerPerTeam: Int = smallNovicePlayers.count / numberOfTeams
+
+
+
+print("\(smallXpPlayers.count) \n")
+print("\(smallNovicePlayers.count) \n")
+print("\(tallXpPlayers.count) \n")
+print("\(tallNovicePlayers.count) \n")
+
+
+
+func newAddPlayers() -> [[String: Any]] {
+    var team: [[String: Any]] = []
+    
+    for _ in 0..<numberOfExperimentedTallPlayerPerTeam {
+        team.append(tallXpPlayers[tallXpPlayers.count - 1])
+        tallXpPlayers.remove(at: tallXpPlayers.count - 1)
+    }
+    
+    for _ in 0..<numberOfExperimentedSmallPlayerPerTeam {
+        team.append(smallXpPlayers[smallXpPlayers.count - 1])
+        smallXpPlayers.remove(at: smallXpPlayers.count - 1)
+    }
+    
+    for _ in 0..<numberOfNoviceTallPlayerPerTeam {
+        team.append(tallNovicePlayers[tallNovicePlayers.count - 1])
+        tallNovicePlayers.remove(at: tallNovicePlayers.count - 1)
+    }
+    
+    for _ in 0..<numberOfNoviceSmallPlayerPerTeam {
+        team.append(smallNovicePlayers[smallNovicePlayers.count - 1])
+        smallNovicePlayers.remove(at: smallNovicePlayers.count - 1)
+    }
+    
+    return team
+}
+
+
+let newTeamRaptors = newAddPlayers()
+let newTeamSharks = newAddPlayers()
+let newTeamDragons = newAddPlayers()
+
+
+//print("\(newTeamRaptors) \n")
+//print("\(newTeamSharks) \n")
+//print("\(newTeamDragons) \n")
+
+
+let teamRaptorsAvgHeight: Int = calculAverageHeight(team: newTeamRaptors)
+let teamSharksAvgHeight: Int = calculAverageHeight(team: newTeamSharks)
+let teamDragonsAvgHeight: Int = calculAverageHeight(team: newTeamDragons)
+
+
+
 
 var experimentedPlayers: [[String: Any]] = sortPlayers(fromTeam: players).xpTeam
 var novicePlayers: [[String: Any]] = sortPlayers(fromTeam: players).noviceTeam
