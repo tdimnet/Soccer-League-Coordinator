@@ -36,9 +36,6 @@ var teamSharks: [[String: Any]] = []
 var teamRaptors: [[String: Any]] = []
 
 
-
-
-
 // Sort the players into two distinc arrays (once for experimented and the other for novice)
 func sortPlayers(fromTeam team: [[String: Any]]) -> (xpTeam: [[String: Any]], noviceTeam: [[String: Any]]) {
     var xpTeam: [[String: Any]] = []
@@ -83,16 +80,15 @@ teamSharks = addPlayers()
 teamDragons = addPlayers()
 
 
-print("\(teamRaptors) \n")
-print("\(teamSharks) \n")
-print("\(teamDragons) \n")
-
-
 var letters: [String] = []
 
 func createLetters(toTeam team: [[String: Any]], teamName: String, teamPractice: String) -> Void {
     for index in 0..<teamRaptors.count {
-        let letter: String = "Dear \(team[index]["guardian"] ?? ""), \(team[index]["name"] ?? "") has been selected for the team \(teamName) this year. Its first trainning will be at \(teamPractice)."
+        
+        guard let guardianName = team[index]["guardian"] as? String else { break }
+        guard let playerName = team[index]["name"] as? String else { break }
+        
+        let letter: String = "Dear \(guardianName), \(playerName) has been selected for the team \(teamName) this year. Its first trainning will be at \(teamPractice)."
         letters.append(letter)
     }
 }
@@ -108,7 +104,7 @@ func displayLetters(letters: [String]) -> Void {
     }
 }
 
-//displayLetters(letters: letters)
+displayLetters(letters: letters)
 
 
 
