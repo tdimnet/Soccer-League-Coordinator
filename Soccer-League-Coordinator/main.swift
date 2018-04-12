@@ -34,11 +34,11 @@ let players: [[String: Any]] = [
 ]
 
 // The three arrays of players
-let numberOfTeams: Int = 3
+
 var teamDragons: [[String: Any]] = []
 var teamSharks: [[String: Any]] = []
 var teamRaptors: [[String: Any]] = []
-
+let numberOfTeams: Int = [teamDragons, teamSharks, teamRaptors].count
 
 /*
  Create well balanced teams of players
